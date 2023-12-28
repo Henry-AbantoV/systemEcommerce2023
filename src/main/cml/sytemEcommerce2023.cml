@@ -16,3 +16,18 @@ BoundedContext gestionProductos {
   } 
  }
 }
+
+BoundedContext gestionPedidos {
+
+ Module Pedido {
+   Aggregate Pedido {
+     Entity Pedido
+       ValueObject id
+       ValueObject clienteId
+       ValueObject fechaPedido
+       ValueObject estado
+       ValueObject DireccionEntrega
+       ValueObject MetodoPago
+     }
+   }
+ }
