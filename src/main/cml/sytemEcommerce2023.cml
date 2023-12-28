@@ -17,7 +17,6 @@ BoundedContext GestionProductos {
   } 
  }
 }
-<<<<<<< HEAD
 
 BoundedContext gestionPedidos {
 
@@ -33,7 +32,6 @@ BoundedContext gestionPedidos {
      }
    }
  }
-=======
 BoundedContext GestionEnvios {
  Module Envio{
   Aggregate Envio{
@@ -48,4 +46,3 @@ BoundedContext GestionEnvios {
  }
   
 }
->>>>>>> origin/main
