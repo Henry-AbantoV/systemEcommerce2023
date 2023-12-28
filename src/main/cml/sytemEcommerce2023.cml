@@ -7,7 +7,7 @@ BoundedContext gestionProductos {
   Aggregate Producto{// Se definen las entidades del contexto
     Entity Producto 
     // Se definen los atributos de la entidad
-    ValueObject id
+    ValueObject idprod
     ValueObject nombre
     ValueObject precio
     ValueObject categoria
@@ -15,4 +15,18 @@ BoundedContext gestionProductos {
     ValueObject imagen
   } 
  }
+}
+
+BoundedContext GestionEnvios {
+ Module Envio{
+  Aggregate Envio{
+    Entity Envio 
+      ValueObject idenvio
+      ValueObject direccion
+      ValueObject fecha
+      ValueObject seguimiento
+  
+  }
+ }
+  
 }
