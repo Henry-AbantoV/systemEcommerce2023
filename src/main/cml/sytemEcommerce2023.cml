@@ -16,3 +16,17 @@ BoundedContext gestionProductos {
   } 
  }
 }
+BoundedContext Envios {
+ Module Envio{
+  Aggregate Envio{
+    Entity Envio 
+      ValueObject idenvio
+      ValueObject direccion
+      ValueObject fechaenvio
+      ValueObject estadoEnvio
+      ValueObject metodoEnvio
+  
+  }
+ }
+  
+}
