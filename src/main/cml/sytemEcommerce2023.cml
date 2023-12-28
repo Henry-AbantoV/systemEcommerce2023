@@ -1,5 +1,6 @@
 ContextMap SystemEcomemerce2023{
-
+contains gestionProductos
+contains Envios
 }
 BoundedContext GestionProductos {
 
