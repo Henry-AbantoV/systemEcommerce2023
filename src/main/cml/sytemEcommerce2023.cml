@@ -1,13 +1,14 @@
 ContextMap SystemEcomemerce2023{
-
+contains gestionProductos
+contains Envios
 }
-BoundedContext gestionProductos {
+BoundedContext GestionProductos {
 
  Module Producto{
   Aggregate Producto{// Se definen las entidades del contexto
     Entity Producto 
     // Se definen los atributos de la entidad
-    ValueObject id
+    ValueObject idprod
     ValueObject nombre
     ValueObject precio
     ValueObject categoria
@@ -16,6 +17,7 @@ BoundedContext gestionProductos {
   } 
  }
 }
+<<<<<<< HEAD
 
 BoundedContext gestionPedidos {
 
@@ -31,3 +33,19 @@ BoundedContext gestionPedidos {
      }
    }
  }
+=======
+BoundedContext GestionEnvios {
+ Module Envio{
+  Aggregate Envio{
+    Entity Envio 
+      ValueObject idenvio
+      ValueObject direccion
+      ValueObject fechaenvio
+      ValueObject estadoEnvio
+      ValueObject metodoEnvio
+  
+  }
+ }
+  
+}
+>>>>>>> origin/main
