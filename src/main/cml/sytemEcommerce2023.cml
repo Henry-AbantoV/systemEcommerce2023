@@ -1,0 +1,18 @@
+ContextMap SystemEcomemerce2023{
+
+}
+BoundedContext gestionProductos {
+
+ Module Producto{
+  Aggregate Producto{// Se definen las entidades del contexto
+    Entity Producto 
+    // Se definen los atributos de la entidad
+    ValueObject id
+    ValueObject nombre
+    ValueObject precio
+    ValueObject categoria
+    ValueObject descripcion
+    ValueObject imagen
+  } 
+ }
+}
