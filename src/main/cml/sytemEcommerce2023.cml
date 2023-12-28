@@ -1,6 +1,7 @@
 ContextMap SystemEcomemerce2023{
-contains gestionProductos
-contains Envios
+contains GestionProductos
+contains GestionEnvios
+contains gestionPedidos
 }
 BoundedContext GestionProductos {
 
@@ -23,7 +24,6 @@ BoundedContext gestionPedidos {
  Module Pedido {
    Aggregate Pedido {
      Entity Pedido
-       git id
        ValueObject clienteId
        ValueObject fechaPedido
        ValueObject estado

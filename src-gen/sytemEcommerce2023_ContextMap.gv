@@ -1,3 +1,6 @@
 digraph "ContextMapGraph" {
 graph ["imagepath"="/tmp/GraphvizJava"]
+"GestionEnvios" ["margin"="0.3","orientation"="206","shape"="egg","fontsize"="16","style"="bold","label"="GestionEnvios\n","fontname"="sans-serif"]
+"GestionProductos" ["margin"="0.3","orientation"="166","shape"="egg","fontsize"="16","style"="bold","label"="GestionProductos\n","fontname"="sans-serif"]
+"gestionPedidos" ["margin"="0.3","orientation"="267","shape"="egg","fontsize"="16","style"="bold","label"="gestionPedidos\n","fontname"="sans-serif"]
 }
