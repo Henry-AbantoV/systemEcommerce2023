@@ -1,7 +1,7 @@
 ContextMap SystemEcomemerce2023{
 
 }
-BoundedContext gestionProductos {
+BoundedContext GestionProductos {
 
  Module Producto{
   Aggregate Producto{// Se definen las entidades del contexto
@@ -16,7 +16,7 @@ BoundedContext gestionProductos {
   } 
  }
 }
-BoundedContext Envios {
+BoundedContext GestionEnvios {
  Module Envio{
   Aggregate Envio{
     Entity Envio 
