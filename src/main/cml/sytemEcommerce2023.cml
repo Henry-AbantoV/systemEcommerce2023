@@ -14,6 +14,54 @@ Domain SystemEcomemerceContextMap{
     type CORE_DOMAIN
     domainVisionStatement="Contiene los precios y descuentos dentro del catalogo de productos"
   }
+
+  Subdomain CreacionPedidos{
+    type CORE_DOMAIN
+    domainVisionStatement="Consiste en que el cliente agrega productos desde el carrito de compras en el sitio web"
+  }
+  Subdomain SeguimientoPedidos{
+    type CORE_DOMAIN
+    domainVisionStatement="consiste en el rastreo del estado del estado del producto"
+  }
+  Subdomain AutorizacionPagos{
+    type CORE_DOMAIN
+    domainVisionStatement="Autorizacion de pagos"
+  }
+  Subdomain Reembolsos{
+    type CORE_DOMAIN
+    domainVisionStatement="Reembolsos"
+  }
+
+  //type SUPPORT DOMAIN
+  Subdomain CuentaCliente{
+    type SUPPORTING_DOMAIN
+    domainVisionStatement="Consiste en el registro e historial de cuentas de los clientes"
+  }
+  Subdomain AutorizacionCliente{
+    type SUPPORTING_DOMAIN
+    domainVisionStatement="Consiste en la autorizacion de login al sistema ecommerce"
+  }
+  Subdomain PerfilCliente{
+    type SUPPORTING_DOMAIN
+    domainVisionStatement="Es el historial de los perfiles de nuestros clientes"
+  }
+  Subdomain SeguimientoProductos{
+    type SUPPORTING_DOMAIN
+    domainVisionStatement="Consiste en el seguimiento de las existencias de los productos"
+  }
+  Subdomain ReposicionProductos{
+    type SUPPORTING_DOMAIN
+    domainVisionStatement="Es la reposicion de productos faltantes en stock"
+  }
+  Subdomain CreacionPromociones{
+    type SUPPORTING_DOMAIN
+    domainVisionStatement="Es crear contenido atractivo para el marketing del sistema ecommerce"
+  }
+  Subdomain SeguimientoCampanias{
+    type SUPPORTING_DOMAIN
+  }
+
+
 }
 
 BoundedContext GestionProductos {
