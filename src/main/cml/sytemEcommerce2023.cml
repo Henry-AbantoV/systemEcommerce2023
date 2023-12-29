@@ -39,11 +39,12 @@ Domain SystemEcomemerceContextMap{
   }
   Subdomain AutorizacionPagos{
     type CORE_DOMAIN
-    domainVisionStatement="Autorizacion de pagos"
+    domainVisionStatement="Autoriza"
   }
   Subdomain Reembolsos{
     type CORE_DOMAIN
-    domainVisionStatement="Reembolsos"
+    domainVisionStatement="Consiste en la gestion integral de los reembolsos, teniendo como proposito principal facilitar y optimizar 
+                          los procesos asociados con la devolución de fondos o compensaciones financieras dentro del contexto empresarial"
   }
 
   //type SUPPORT DOMAIN
@@ -180,7 +181,6 @@ BoundedContext GestionPagos implements AutorizacionPagos,Reembolsos{
   }
  
 }
-
 BoundedContext GestionPromociones implements CreacionPromociones,SeguimientoCampanias{
   Module Promocion{
     Aggregate Promocion{
