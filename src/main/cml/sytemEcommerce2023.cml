@@ -45,6 +45,23 @@ BoundedContext gestionPedidos {
      }
    }
  }
+
+BoundedContext GestionClientes implements CuentaCliente, AutorizacionCliente, PerfilCliente {
+  Module Cliente{
+    Aggregate Cliente{
+         Entity PerfilUsuario 
+            ValueObject idUsuario
+            ValueObject nombres
+            ValueObject apellidos
+            ValueObject correo
+            ValueObject ubicacion
+  
+    }
+  }
+ 
+}
+
+
 BoundedContext GestionEnvios {
  Module Envio{
   Aggregate Envio{
