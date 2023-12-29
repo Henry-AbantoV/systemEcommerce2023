@@ -66,8 +66,20 @@ Domain SystemEcomemerceContextMap{
     type SUPPORTING_DOMAIN
   }
 
-
+//Type GENERIC
+  Subdomain LogisticaEnvio{
+    type GENERIC_SUBDOMAIN
+  }
+  Subdomain SeguimientoEnvio{
+    type GENERIC_SUBDOMAIN
+  }
+  Subdomain Devoluciones{
+    type GENERIC_SUBDOMAIN
+  }
+  
 }
+
+
 
 BoundedContext GestionProductos {
 
