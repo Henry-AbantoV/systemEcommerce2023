@@ -44,5 +44,35 @@ BoundedContext GestionEnvios {
   
   }
  }
-  
+}
+BoundedContext GestionInventario implements SeguimientoProductos, ReposicionProductos {
+  Module Inventario{
+    Aggregate Inventario{
+         Entity Inventario 
+            ValueObject idProducto
+            ValueObject nombreProducto
+            ValueObject categoria
+            ValueObject stock
+            ValueObject fechaRecepcion
+            ValueObject precioUnitario
+            ValueObject fechaCaducidad
+            ValueObject ubicAlmacen
+            ValueObject serieProduct
+    }
+  }
+}
+BoundedContext GestionPromociones implements CreacionPromociones,SeguimientoCampanias{
+  Module Promocion{
+    Aggregate Promocion{
+         Entity Promocion
+            ValueObject idPromocion
+            ValueObject nombrePromocion
+            ValueObject tipo
+            ValueObject fechaInicio
+            ValueObject fechaFin
+            ValueObject RestricGeografica
+            ValueObject segmentoPoblacion
+            ValueObject objetivo
+    }
+  }
 }
