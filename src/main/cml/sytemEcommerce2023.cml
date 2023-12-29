@@ -7,6 +7,15 @@ ContextMap SystemEcomemerce2023{
     contains GestionInventario
     contains GestionPromociones
 
+       //Hacemos las relaciones entre los bounded context
+    GestionProductos [SK] <-> [SK]GestionInventario
+    GestionClientes[D]<-[U] GestionPedidos //Relacion confirmista donde GestionPedidos se adopta se acuerdo a la GestionClientes
+    GestionPagos[D,ACL]<-[U] GestionPedidos //Relacion ACL donde GestionPedidos(dominante) y GestionPagos(dependiente)
+    GestionEnvios[D,ACL]<-[U]GestionPedidos
+    GestionPedidos[D]<-[U]GestionPromociones//Relacion conformist
+    GestionPromociones[D]<-[U,OHS]GestionProductos
+
+
 }
 
 Domain SystemEcomemerceContextMap{
@@ -85,7 +94,7 @@ BoundedContext GestionProductos {
  }
 }
 
-BoundedContext gestionPedidos {
+BoundedContext GestionPedidos {
 
  Module Pedido {
    Aggregate Pedido {
