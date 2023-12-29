@@ -1,7 +1,12 @@
 ContextMap SystemEcomemerce2023{
-contains GestionProductos
-contains GestionEnvios
-contains gestionPedidos
+    contains GestionProductos
+    contains GestionEnvios
+    contains gestionPedidos
+    contains GestionPagos
+    contains GestionClientes
+    contains GestionInventario
+    contains GestionPromociones
+
 }
 
 Domain SystemEcomemerceContextMap{
