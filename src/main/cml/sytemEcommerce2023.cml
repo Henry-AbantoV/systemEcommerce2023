@@ -91,6 +91,22 @@ BoundedContext GestionInventario implements SeguimientoProductos, ReposicionProd
     }
   }
 }
+
+BoundedContext GestionPagos implements AutorizacionPagos,Reembolsos{
+  Module Pago{
+    Aggregate Pago{
+         Entity Pago 
+            ValueObject idPago
+            ValueObject fechaPago
+            ValueObject metodoPago
+            ValueObject monto
+            ValueObject descuento
+  
+    }
+  }
+ 
+}
+
 BoundedContext GestionPromociones implements CreacionPromociones,SeguimientoCampanias{
   Module Promocion{
     Aggregate Promocion{
