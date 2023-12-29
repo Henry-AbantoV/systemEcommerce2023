@@ -3,6 +3,19 @@ contains GestionProductos
 contains GestionEnvios
 contains gestionPedidos
 }
+
+Domain SystemEcomemerceContextMap{
+  //type CORE DOMAIN
+  Subdomain CatologoProductos{
+    type CORE_DOMAIN
+    domainVisionStatement="Descripcion del catalogo de productos en el sistema ecommerce"
+  }
+  Subdomain Precios_Descuentos{
+    type CORE_DOMAIN
+    domainVisionStatement="Contiene los precios y descuentos dentro del catalogo de productos"
+  }
+}
+
 BoundedContext GestionProductos {
 
  Module Producto{
