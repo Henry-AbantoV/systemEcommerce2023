@@ -39,7 +39,9 @@ Domain SystemEcomemerceContextMap{
   }
   Subdomain AutorizacionPagos{
     type CORE_DOMAIN
-    domainVisionStatement="Autoriza"
+    domainVisionStatement="Autorizacion de pagos, especializado en la autorización efectiva de pagos dentro del contexto empresarial,
+                          de igual manera enfocandose en facilitar y optimizar los procesos vinculados con la validación y aprobación
+                          de transacciones financieras"
   }
   Subdomain Reembolsos{
     type CORE_DOMAIN
