@@ -1,7 +1,7 @@
 ContextMap SystemEcomemerce2023{
     contains GestionProductos
     contains GestionEnvios
-    contains gestionPedidos
+    contains GestionPedidos
     contains GestionPagos
     contains GestionClientes
     contains GestionInventario
