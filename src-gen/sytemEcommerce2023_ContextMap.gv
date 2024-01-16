@@ -1,24 +1,24 @@
 digraph "ContextMapGraph" {
 graph ["imagepath"="/tmp/GraphvizJava"]
-"GestionClientes" ["margin"="0.3","orientation"="266","shape"="egg","fontsize"="16","style"="bold","label"="GestionClientes\n","fontname"="sans-serif"]
-"GestionEnvios" ["margin"="0.3","orientation"="240","shape"="egg","fontsize"="16","style"="bold","label"="GestionEnvios\n","fontname"="sans-serif"]
-"GestionInventario" ["margin"="0.3","orientation"="212","shape"="egg","fontsize"="16","style"="bold","label"="GestionInventario\n","fontname"="sans-serif"]
-"GestionPagos" ["margin"="0.3","orientation"="204","shape"="egg","fontsize"="16","style"="bold","label"="GestionPagos\n","fontname"="sans-serif"]
-"GestionPedidos" ["margin"="0.3","orientation"="21","shape"="egg","fontsize"="16","style"="bold","label"="GestionPedidos\n","fontname"="sans-serif"]
-"GestionProductos" ["margin"="0.3","orientation"="318","shape"="egg","fontsize"="16","style"="bold","label"="GestionProductos\n","fontname"="sans-serif"]
-"GestionPromociones" ["margin"="0.3","orientation"="193","shape"="egg","fontsize"="16","style"="bold","label"="GestionPromociones\n","fontname"="sans-serif"]
+"GestionClientes" ["margin"="0.3","orientation"="318","shape"="egg","fontsize"="16","style"="bold","label"="GestionClientes\n","fontname"="sans-serif"]
+"GestionEnvios" ["margin"="0.3","orientation"="92","shape"="egg","fontsize"="16","style"="bold","label"="GestionEnvios\n","fontname"="sans-serif"]
+"GestionInventario" ["margin"="0.3","orientation"="83","shape"="egg","fontsize"="16","style"="bold","label"="GestionInventario\n","fontname"="sans-serif"]
+"GestionPagos" ["margin"="0.3","orientation"="27","shape"="egg","fontsize"="16","style"="bold","label"="GestionPagos\n","fontname"="sans-serif"]
+"GestionPedidos" ["margin"="0.3","orientation"="184","shape"="egg","fontsize"="16","style"="bold","label"="GestionPedidos\n","fontname"="sans-serif"]
+"GestionProductos" ["margin"="0.3","orientation"="116","shape"="egg","fontsize"="16","style"="bold","label"="GestionProductos\n","fontname"="sans-serif"]
+"GestionPromociones" ["margin"="0.3","orientation"="343","shape"="egg","fontsize"="16","style"="bold","label"="GestionPromociones\n","fontname"="sans-serif"]
 "GestionPedidos" -> "GestionEnvios" ["headlabel"=<<table cellspacing="0" cellborder="1" border="0">
+<tr><td bgcolor="white" sides="r">D</td><td sides="trbl" bgcolor="white"><font>ACL</font></td></tr>
+</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
+<tr><td bgcolor="white">U</td></tr>
+</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
+"GestionPedidos" -> "GestionPagos" ["headlabel"=<<table cellspacing="0" cellborder="1" border="0">
 <tr><td bgcolor="white" sides="r">D</td><td sides="trbl" bgcolor="white"><font>ACL</font></td></tr>
 </table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
 <tr><td bgcolor="white">U</td></tr>
 </table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
 "GestionPedidos" -> "GestionClientes" ["headlabel"=<<table cellspacing="0" cellborder="0" border="0">
 <tr><td bgcolor="white">D</td></tr>
-</table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
-<tr><td bgcolor="white">U</td></tr>
-</table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]
-"GestionPedidos" -> "GestionPagos" ["headlabel"=<<table cellspacing="0" cellborder="1" border="0">
-<tr><td bgcolor="white" sides="r">D</td><td sides="trbl" bgcolor="white"><font>ACL</font></td></tr>
 </table>>,"labeldistance"="0","fontsize"="12","taillabel"=<<table cellspacing="0" cellborder="0" border="0">
 <tr><td bgcolor="white">U</td></tr>
 </table>>,"style"="bold","label"="                                        ","dir"="none","fontname"="sans-serif"]

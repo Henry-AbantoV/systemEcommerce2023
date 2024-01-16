@@ -1,195 +1,138 @@
 ContextMap SystemEcomemerce2023{
-contains GestionProductos
-contains GestionEnvios
-contains GestionPedidos
-contains GestionPagos
-contains GestionClientes
-contains GestionInventario
-contains GestionPromociones
-//Hacemos las relaciones entre los bounded context
-GestionProductos [SK] <-> [SK]GestionInventario
-GestionClientes[D]<-[U] GestionPedidos //Relacion confirmista
-//donde GestionPedidos se adopta se acuerdo a la GestionClientes
-GestionPagos[D,ACL]<-[U] GestionPedidos //Relacion ACL donde
-//GestionPedidos(dominante) y GestionPagos(dependiente)
-GestionEnvios[D,ACL]<-[U]GestionPedidos
-GestionPedidos[D]<-[U]GestionPromociones//Relacion conformist
-GestionPromociones[D]<-[U,OHS]GestionProductos
+    contains GestionAlquileres
+    contains GestionClientes
+    contains GestionVehiculos
+    contains GestionPagos
+    contains Seguridad
+
+    // Relaciones entre bounded contexts
+    GestionAlquileres[D]<-[U] GestionClientes
+    GestionAlquileres[D]<-[U] GestionVehiculos
+    GestionAlquileres[D]<-[U] GestionPagos
+    GestionPagos[D, ACL]<-[U] Seguridad
 }
-//Identificamos el dominio y subdominios en el sistema ecommerce
-Domain SystemEcomemerceContextMap{
-//type CORE DOMAIN
-Subdomain CatologoProductos{
-type CORE_DOMAIN
-domainVisionStatement="Descripcion del catalogo de productos
-en el sistema ecommerce"
+
+// Dominios y subdominios en el sistema de alquiler de vehículos
+Domain SistemaAlquilerVehiculosContextMap {
+    // CORE DOMAINS
+    Subdomain GestionAlquileres {
+        type CORE_DOMAIN
+        domainVisionStatement = "Gestión de alquileres: Reservas, seguimiento de vehículos y contratos."
+    }
+
+    Subdomain GestionClientes {
+        type CORE_DOMAIN
+        domainVisionStatement = "Gestión de clientes: Perfiles, preferencias y creación de cuentas."
+    }
+
+    Subdomain GestionVehiculos {
+        type CORE_DOMAIN
+        domainVisionStatement = "Gestión de vehículos: Detalles de mantenimientos, características y disponibilidad."
+    }
+
+    Subdomain GestionPagos {
+        type CORE_DOMAIN
+        domainVisionStatement = "Gestión de pagos: Procesamiento seguro, facturas y recibos."
+    }
+
+    Subdomain Seguridad {
+        type CORE_DOMAIN
+        domainVisionStatement = "Seguridad: Autenticación, autorización y protocolos de seguridad."
+    }
+
+    // SUPPORTING DOMAINS
+    // (Puedes agregar más subdominios de soporte según sea necesario)
 }
-Subdomain Precios_Descuentos{
-type CORE_DOMAIN
-domainVisionStatement="Contiene los precios y descuentos
-dentro del catalogo de productos"
+
+// Definición de los bounded contexts para el sistema de alquiler de vehículos
+BoundedContext GestionAlquileres implements GestionAlquileres, Seguridad {
+    Module Alquiler {
+        Aggregate Reserva {
+            Entity Reserva {
+                ValueObject clienteId
+                ValueObject vehiculoId
+                ValueObject fechaInicio
+                ValueObject fechaFin
+                ValueObject estado
+            }
+        }
+
+        Aggregate ContratoAlquiler {
+            Entity ContratoAlquiler {
+                ValueObject reservaId
+                ValueObject fechaContrato
+                ValueObject condiciones
+                // Otros atributos del contrato
+            }
+        }
+    }
 }
-Subdomain CreacionPedidos{
-type CORE_DOMAIN
-domainVisionStatement="Consiste en que el cliente agrega
-productos desde el carrito de compras en el sitio web"
+
+BoundedContext GestionClientes implements GestionClientes, Seguridad {
+    Module Cliente {
+        Aggregate Cliente {
+            Entity PerfilCliente {
+                ValueObject clienteId
+                ValueObject nombres
+                ValueObject apellidos
+                ValueObject correo
+                ValueObject preferencias
+                // Otros atributos del perfil
+            }
+        }
+
+        // Otros módulos y agregados relacionados con la gestión de clientes
+    }
 }
-Subdomain SeguimientoPedidos{
-type CORE_DOMAIN
-domainVisionStatement="consiste en el rastreo del estado del
-estado del producto"
+
+BoundedContext GestionVehiculos implements GestionVehiculos, Seguridad {
+    Module Vehiculo {
+        Aggregate Vehiculo {
+            Entity DetallesVehiculo {
+                ValueObject vehiculoId
+                ValueObject modelo
+                ValueObject marca
+                ValueObject caracteristicas
+                ValueObject estadoMantenimiento
+                // Otros atributos del vehículo
+            }
+        }
+
+        Aggregate HistorialServicio {
+            Entity HistorialServicio {
+                ValueObject vehiculoId
+                ValueObject fechaServicio
+                ValueObject tipoServicio
+                ValueObject detalles
+                // Otros atributos del historial de servicio
+            }
+        }
+
+        // Otros módulos y agregados relacionados con la gestión de vehículos
+    }
 }
-Subdomain AutorizacionPagos{
-type CORE_DOMAIN
-domainVisionStatement="Autorizacion de pagos"
+
+BoundedContext GestionPagos implements GestionPagos, Seguridad {
+    Module Pago {
+        Aggregate TransaccionPago {
+            Entity TransaccionPago {
+                ValueObject reservaId
+                ValueObject fechaPago
+                ValueObject monto
+                // Otros atributos de la transacción de pago
+            }
+        }
+
+        // Otros módulos y agregados relacionados con la gestión de pagos
+    }
 }
-Subdomain Reembolsos{
-type CORE_DOMAIN
-domainVisionStatement="Reembolsos"
-}
-//type SUPPORT DOMAIN
-Subdomain CuentaCliente{
-type SUPPORTING_DOMAIN
-domainVisionStatement="Consiste en el registro e historial de
-cuentas de los clientes"
-}
-Subdomain AutorizacionCliente{
-type SUPPORTING_DOMAIN
-domainVisionStatement="Consiste en la autorizacion de login al
-sistema ecommerce"
-}
-Subdomain PerfilCliente{
-type SUPPORTING_DOMAIN
-domainVisionStatement="Es el historial de los perfiles de
-nuestros clientes"
-}
-Subdomain SeguimientoProductos{
-type SUPPORTING_DOMAIN
-domainVisionStatement="Consiste en el seguimiento de las
-existencias de los productos"
-}
-Subdomain ReposicionProductos{
-type SUPPORTING_DOMAIN
-domainVisionStatement="Es la reposicion de productos faltantes
-en stock"
-}
-Subdomain CreacionPromociones{
-type SUPPORTING_DOMAIN
-domainVisionStatement="Es crear contenido atractivo para el
-marketing del sistema ecommerce"
-}
-Subdomain SeguimientoCampanias{
-type SUPPORTING_DOMAIN
-}
-//Type GENERIC
-Subdomain LogisticaEnvio{
-type GENERIC_SUBDOMAIN
-}
-Subdomain SeguimientoEnvio{
-type GENERIC_SUBDOMAIN
-}
-Subdomain Devoluciones{
-type GENERIC_SUBDOMAIN
-}
-}
-//Definimos todos los bounded context del sistema ecommerce
-BoundedContext GestionProductos implements CatologoProductos,
-Precios_Descuentos {
-Module Producto{
-Aggregate Producto{// Se definen las entidades del contexto
-Entity Producto
-// Se definen los atributos de la entidad
-ValueObject idprod
-ValueObject nombre
-ValueObject precio
-ValueObject categoria
-ValueObject descripcion
-ValueObject imagen
-}
-}
-}
-BoundedContext GestionPedidos implements
-CreacionPedidos,SeguimientoPedidos{
-Module Pedido {
-Aggregate Pedido {
-Entity Pedido
-ValueObject clienteId
-ValueObject fechaPedido
-ValueObject estado
-ValueObject DireccionEntrega
-ValueObject MetodoPago
-}
-}
-}
-BoundedContext GestionEnvios implements
-LogisticaEnvio,SeguimientoEnvio,Devoluciones {
-Module Envio{
-Aggregate Envio{
-Entity Envio
-ValueObject idenvio
-ValueObject direccion
-ValueObject fechaenvio
-ValueObject estadoEnvio
-ValueObject metodoEnvio
-}
-}
-}
-BoundedContext GestionPagos implements
-AutorizacionPagos,Reembolsos{
-Module Pago{
-Aggregate Pago{
-Entity Pago
-ValueObject idPago
-ValueObject fechaPago
-ValueObject metodoPago
-ValueObject monto
-ValueObject descuento
-}
-}
-}
-BoundedContext GestionClientes implements CuentaCliente,
-AutorizacionCliente, PerfilCliente {
-Module Cliente{
-Aggregate Cliente{
-Entity PerfilUsuario
-ValueObject idUsuario
-ValueObject nombres
-ValueObject apellidos
-ValueObject correo
-ValueObject ubicacion
-}
-}
-}
-BoundedContext GestionInventario implements SeguimientoProductos,
-ReposicionProductos {
-Module Inventario{
-Aggregate Inventario{
-Entity Inventario
-ValueObject idProducto
-ValueObject nombreProducto
-ValueObject categoria
-ValueObject stock
-ValueObject fechaRecepcion
-ValueObject precioUnitario
-ValueObject fechaCaducidad
-ValueObject ubicAlmacen
-ValueObject serieProduct
-}
-}
-}
-BoundedContext GestionPromociones implements
-CreacionPromociones,SeguimientoCampanias{
-Module Promocion{
-Aggregate Promocion{
-Entity Promocion
-ValueObject idPromocion
-ValueObject nombrePromocion
-ValueObject tipo
-ValueObject fechaInicio
-ValueObject fechaFin
-ValueObject RestricGeografica
-ValueObject segmentoPoblacion
-ValueObject objetivo
-}
-}
+
+BoundedContext Seguridad implements Seguridad {
+    Module AutenticacionAutorizacion {
+        // Lógica y funcionalidades relacionadas con autenticación y autorización
+    }
+
+    Module ProtocolosSeguridad {
+        // Implementación de protocolos y políticas de seguridad
+    }
 }
